@@ -1,2 +1,2 @@
-# xuezi
-学子商城
+# team project
+团队项目
