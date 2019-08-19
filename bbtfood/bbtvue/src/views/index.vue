@@ -1,0 +1,272 @@
+<template>
+  <div>
+    <!-- 引入header -->
+    <my-header/>  
+    <!-- 轮播图 -->
+    <p id="container">
+     <swiper :options="swiperOption" ref="mySwiper">
+      <swiper-slide class="swiper-slide games">
+       <img src="../assets/slider-1.jpg" alt="">
+      </swiper-slide>
+      <swiper-slide class="swiper-slide games">
+       <img src="../assets/slider-2.jpg" alt="">
+      </swiper-slide>
+      <swiper-slide class="swiper-slide games">       
+       <img src="../assets/slider-3.jpg" alt="">       
+      </swiper-slide>       
+      <swiper-slide class="swiper-slide games">       
+       <img src="../assets/slider-4.jpg" alt="">       
+      </swiper-slide> 
+       <swiper-slide class="swiper-slide games">       
+       <img src="../assets/slider-5.jpg" alt="">       
+      </swiper-slide>         
+      <p class="swiper-pagination" slot="pagination"></p>       
+      <p class="swiper-button-prev" slot="button-prev"></p>       
+      <p class="swiper-button-next" slot="button-next"></p>       
+     </swiper>           
+    </p>    
+  <!-- 主体页面 -->
+  <div class="main">
+    <h3>每日精选菜谱
+      <a class="gd" href="javascript:;" onfocus="this.blur();">更多&gt;</a>
+    </h3>
+    <ul class="recipe-list">
+      <li class="item" @click="details">
+        <a class="cover" href="javascript:;" onfocus="this.blur();">
+          <img src="../assets/220x220_058c4482bd48545f9f5c954217108699.jpg" alt="">
+        </a>
+         <a class="name" href="javascript:;" onfocus="this.blur();">口袋免捏饭团｜元气早餐</a>
+      </li>
+      <li class="item" @click="details">
+        <a class="cover" href="javascript:;" onfocus="this.blur();">
+          <img src="../assets/220x220_984eace5bfec23f2852fd3b33f4de24a.jpg" alt="">
+        </a>
+         <a class="name" href="javascript:;" onfocus="this.blur();">#硬核菜谱制作人# 一夜渍脆黄瓜</a>
+      </li>
+      <li class="item" @click="details">
+        <a class="cover" href="javascript:;" onfocus="this.blur();">
+          <img src="../assets/220x220_87ada082d1eb452e42265510f2a838ac.jpg" alt="">
+        </a>
+         <a class="name" href="javascript:;" onfocus="this.blur();">#硬核菜谱制作人#蒜香粉丝烤鲜虾</a>
+      </li>
+      <li class="item" style="margin-right:0;" @click="details">
+        <a class="cover" href="javascript:;" onfocus="this.blur();">
+          <img src="../assets/220x220_d16ddee154ee356c626d7f13b309705f.jpeg" alt="">
+        </a>
+         <a class="name" href="javascript:;" onfocus="this.blur();">#硬核菜谱制作人#肉末豆腐</a>
+      </li>
+      <li class="item" @click="details">
+        <a class="cover" href="javascript:;" onfocus="this.blur();">
+          <img src="../assets/220x220_93093610b5ffdca784acc6edb27c53d1.jpg" alt="">
+        </a>
+         <a class="name" href="javascript:;" onfocus="this.blur();">#硬核菜谱制作人#萌萌哒小狮子纸杯蛋糕</a>
+      </li>
+      <li class="item" @click="details">
+        <a class="cover" href="javascript:;" onfocus="this.blur();">
+          <img src="../assets/220x220_695931e3ce381d66018efff87acffc64.jpg" alt="">
+        </a>
+         <a class="name" href="javascript:;" onfocus="this.blur();">凉拌干豆腐 #美食新势力#</a>
+      </li>
+      <li class="item" @click="details">
+        <a class="cover" href="javascript:;" onfocus="this.blur();">
+          <img src="../assets/220x220_b5cb6503d8ebee7a0239db8e364b7674.jpeg" alt="">
+        </a>
+         <a class="name" href="javascript:;" onfocus="this.blur();">#硬核菜谱制作人#西式黑椒牛扒</a>
+      </li>
+      <li class="item" style="margin-right:0;" @click="details">
+        <a class="cover" href="javascript:;" onfocus="this.blur();">
+          <img src="../assets/220x220_e5dd4962121fd6ded36dc99f25c08e7e.jpg" alt="">
+        </a>
+         <a class="name" href="javascript:;" onfocus="this.blur();">葱油拌面</a>
+      </li>
+    </ul>
+
+    <h3>笔记
+      <a class="gd" href="javascript:;" onfocus="this.blur();">更多&gt;</a>
+    </h3>
+    <ul class="recipe-list">
+      <li class="item" @click="details">
+        <a class="cover" href="javascript:;" onfocus="this.blur();">
+          <img src="../assets/220x220_058c4482bd48545f9f5c954217108699.jpg" alt="">
+        </a>
+         <a class="name" href="javascript:;" onfocus="this.blur();">口袋免捏饭团｜元气早餐</a>
+      </li>
+      <li class="item" @click="details">
+        <a class="cover" href="javascript:;" onfocus="this.blur();">
+          <img src="../assets/220x220_984eace5bfec23f2852fd3b33f4de24a.jpg" alt="">
+        </a>
+         <a class="name" href="javascript:;" onfocus="this.blur();">#硬核菜谱制作人# 一夜渍脆黄瓜</a>
+      </li>
+      <li class="item" @click="details">
+        <a class="cover" href="javascript:;" onfocus="this.blur();">
+          <img src="../assets/220x220_87ada082d1eb452e42265510f2a838ac.jpg" alt="">
+        </a>
+         <a class="name" href="javascript:;" onfocus="this.blur();">#硬核菜谱制作人#蒜香粉丝烤鲜虾</a>
+      </li>
+      <li class="item" style="margin-right:0;" @click="details">
+        <a class="cover" href="javascript:;" onfocus="this.blur();">
+          <img src="../assets/220x220_d16ddee154ee356c626d7f13b309705f.jpeg" alt="">
+        </a>
+         <a class="name" href="javascript:;" onfocus="this.blur();">#硬核菜谱制作人#肉末豆腐</a>
+      </li>
+      <li class="item" @click="details">
+        <a class="cover" href="javascript:;" onfocus="this.blur();">
+          <img src="../assets/220x220_93093610b5ffdca784acc6edb27c53d1.jpg" alt="">
+        </a>
+         <a class="name" href="javascript:;" onfocus="this.blur();">#硬核菜谱制作人#萌萌哒小狮子纸杯蛋糕</a>
+      </li>
+      <li class="item" @click="details">
+        <a class="cover" href="javascript:;" onfocus="this.blur();">
+          <img src="../assets/220x220_695931e3ce381d66018efff87acffc64.jpg" alt="">
+        </a>
+         <a class="name" href="javascript:;" onfocus="this.blur();">凉拌干豆腐 #美食新势力#</a>
+      </li>
+      <li class="item" @click="details">
+        <a class="cover" href="javascript:;" onfocus="this.blur();">
+          <img src="../assets/220x220_b5cb6503d8ebee7a0239db8e364b7674.jpeg" alt="">
+        </a>
+         <a class="name" href="javascript:;" onfocus="this.blur();">#硬核菜谱制作人#西式黑椒牛扒</a>
+      </li>
+      <li class="item" style="margin-right:0;" @click="details">
+        <a class="cover" href="javascript:;" onfocus="this.blur();">
+          <img src="../assets/220x220_e5dd4962121fd6ded36dc99f25c08e7e.jpg" alt="">
+        </a>
+         <a class="name" href="javascript:;" onfocus="this.blur();">葱油拌面</a>
+      </li>
+    </ul>
+    <h3></h3>
+  </div>
+   <my-footer/>
+  <!-- 引入footer -->
+</div>
+</template>      
+<script>       
+   import { swiper, swiperSlide } from 'vue-awesome-swiper'       
+    export default {       
+     name: 'coverflow',       
+     data () {       
+      return {       
+       swiperOption: {        
+         autoplay : {
+         disableOnInteraction: false, //用户操作后是否禁止自动循环
+         delay: 3000 //自动循环时间
+        }, //可选选项，自动滑动
+        speed: 2000, //切换速度，即slider自动滑动开始到结束的时间（单位ms）
+        loop:true, //循环切换
+        // 渐隐式轮播
+        effect : 'fade',
+        fadeEffect: {
+        crossFade: true,
+        },
+       //  grabCursor: true, //设置为true时，鼠标覆盖Swiper时指针会变成手掌形状，拖动时指针会变成抓手形状
+        // setWrapperSize: true, //Swiper使用flexbox布局(display: flex)，开启这个设定会在Wrapper上添加等于slides相加的宽或高，在对flexbox布局的支持不是很好的浏览器中可能需要用到。    
+        autoHeight: true,   //自动高度。设置为true时，wrapper和container会随着当前slide的高度而发生变化。   
+        scrollbar: '.swiper-scrollbar',
+        mousewheelControl: true, //设置为true时，能使用鼠标滚轮控制slide滑动
+        observeParents: true, //当改变swiper的样式（例如隐藏/显示）或者修改swiper的子元素时，自动初始化swiper  
+        pagination: {
+         el: '.swiper-pagination',
+         // type : 'progressbar', //分页器形状
+         clickable :true, //点击分页器的指示点分页器会控制Swiper切换
+        },
+        navigation: {
+         nextEl: '.swiper-button-next',
+         prevEl: '.swiper-button-prev',        
+        },       
+      },
+      computed: {
+       swiper() {
+        return this.$refs.mySwiper.swiper
+       }       
+      }       
+     }
+    },
+    methods:{
+      details(){
+              this.$router.push('/Details')
+          }
+      }            
+   }       
+</script>       
+   <style scoped>    
+   /*轮播图样式  */
+   a{text-decoration:none;}
+   h3,ul,li,p{margin:0;padding:0;border:0;outline:0;}
+   img {      
+    width: 100%;       
+    height: auto;     
+   }
+  .swiper-button-prev,.swiper-button-next{
+     width:24px;
+     height:24px;
+   }
+   .swiper-button-prev{
+     left: 30px;
+      right: auto;
+   }
+   .swiper-button-next{
+     right: 30px;
+     left: auto;
+     }
+   /* 主体样式 */
+   .main{
+     width: 1000px;
+     margin: 0 auto;
+   }
+   .main h3{
+    font-size: 20px;
+    color: #333;
+    font-weight: bold;
+    margin-top: 40px;
+    line-height: 20px;
+   }
+   .main .gd{
+    font-size: 13px;
+    color: #256DC6;
+    float: right;
+    height: 20px;
+    line-height: 20px;
+    font-weight: normal;
+   }
+   .recipe-list{
+     width:1000px;
+     height:590px;
+   }
+   .recipe-list .item{
+     width: 220px;
+     height: 270px;
+     margin: 25px 40px 0 0;
+     display: inline-block;
+   }
+   .recipe-list .cover:hover{
+     box-shadow: 0 0 40px #ccc;
+     transform: scale(1.1);
+   }
+   .recipe-list .cover{
+     width: 220px;
+     height: 220px;
+     display: block;
+     overflow: hidden;
+     position: relative;
+     cursor: pointer;
+     border-radius: 8px;
+   }
+   .recipe-list img{
+     width: 220px;
+     height: 220px;
+   }
+   .recipe-list .name{
+     display: block;
+     width: 220px;
+     height: 50px;
+     line-height: 50px;
+     font-size: 15px;
+     color: #333;
+     text-overflow: ellipsis;
+     white-space: nowrap;
+     overflow: hidden;
+   }
+   .recipe-list .name:hover{
+     color: #ffaa00;
+   }
+  </style>
