@@ -3,8 +3,12 @@ const router=express.Router();
 const pool=require("../pool");
 
 router.get("/",(req,res)=>{
-  var sql=`SELECT * FROM bbt_index_product where seq_recommended!=0 order by seq_recommended`;
-  pool.query(sql,[],(err,result)=>{
+  var tid=req.query.tid;
+  var output={
+    list:[],
+  }
+  var sql=`SELECT * FROM bbt_pic`;
+  pool.query(sql,[tid],(err,result)=>{
     if(err){
       res.send(err);
       console.log(err);

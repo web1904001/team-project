@@ -1,7 +1,6 @@
 <template>
     <div>
-      <!--引入头部  -->
-      <my-header/>
+            <my-header/>
       <div class="content">
         <div class="nav">
           <ul>
@@ -257,7 +256,6 @@
             </ul>
         </div>
       </div>
-      <!-- 引入尾部 -->
       <my-footer/>
     </div>
 </template>

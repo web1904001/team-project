@@ -4,8 +4,11 @@ import Index from './views/Index.vue'
 import Details from './views/Details.vue'
 import Product from './views/Product.vue'
 import Reg from './views/Reg.vue'
+import Login from './views/Login.vue'
 import Collect from './views/Collect.vue'
 import Cartoon from './views/Cartoon.vue'
+import Shoop from './views/Shoop.vue'
+import Note from './views/Note.vue'
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 
@@ -15,20 +18,28 @@ export default new Router({
   routes: [
     {
       path:"/",
-      component:Index
+      component:Index,
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      path: '/Index',
+      name: 'Index',
+      component: Index
     },
     {
-      path: '/Details',
+      path: '/Shoop',
+      name: 'Shoop',
+      component:Shoop
+    },
+    {
+      path: '/Note',
+      name: 'Note',
+      component:Note
+    },
+    {
+      path: '/Details/:tid',
       name: 'Details',
-      component: Details
+      component: Details,
+      props:true
     },
     {
       path: '/Product',
@@ -49,6 +60,11 @@ export default new Router({
       path: '/Cartoon',
       name: 'Cartoon',
       component: Cartoon
+    },
+    {
+      path: '/Login',
+      name: 'Login',
+      component: Login
     },
   ]
 })

@@ -8,7 +8,7 @@
     <div class="reg-info">
         <div class="reg-info-top">
             <span class="s1">新用户注册</span>
-            <span>已有账号，<a href="">直接登录></a></span>
+            <span>已有账号，<a @click="login">直接登录></a></span>
         </div>
         <div calss="reg-info-bottom">
             <div class="regbox">
@@ -27,18 +27,20 @@
                     <span :class="spanClass2">{{spanMsg2}}</span>
                 </div>
                 <div class="ts">请输入8位以及以上，需要包含，数字字母的密码</div>
-                <div class="regbox-item ccc">
+
+                <!-- <div class="regbox-item ccc">
                     <input  id="yanzheng" class="input1" type="text" placeholder="输入验证码" v-model="verification">
 					<div id="checkCode" class="code"  onclick="createCode(4)"></div>
 					<div><span onclick="createCode(4)">看不清换一张</span>
 					<span class="s3" :class="spanClass3">{{spanMsg3}}</span>
 					</div>
-                </div>
+                </div> -->
+
 				<div id="ss">
                 <span class="s2">
-                    <input type="checkbox" v-model:checked="isAgree">我已阅读并且同意<a href="">棒棒糖美食协议</a>
+                    <input type="checkbox" v-model="checkbox" @click="check">我已阅读并且同意<a href="">棒棒糖美食协议</a>
                 </span>
-                <button id="btncolor" class="btn2" :disabled="isAgree==false">注册</button>
+                <button :class="btn" :disabled="btns">注册</button>
 				</div>
             </div>
         </div>
@@ -51,18 +53,113 @@
 </template>
 <script>
     export default {
-    data() {
+    data(){
         return {
-            
+         phone:"",
+         spanClass:{
+            vali_success:false,
+            vali_fail:false
+        },
+        spanMsg:"",
+
+        petname:'',
+        spanClass1:{
+            vali_success:false,
+            vali_fail:false
+        },
+         spanMsg1:'',
+
+        password:"",
+        spanClass2:{
+            vali_success:false,
+            vali_fail:false
+        },
+        spanMsg2:'',
+      //
+        btn:{
+            btn2:true,
+            active:false
+        },
+        checkbox:false,
+        btns:true,
+        }
+    },
+    
+    watch:{
+        phone(){
+            var reg=/^1[3-9]\d{9}$/;
+            if(reg.test(this.phone)==true){
+                this.spanMsg="手机号可用";
+                this.spanClass={
+                    vali_fail:false,
+                    vali_success:true
+                }
+            }else{
+                this.spanMsg="请输入手机号";
+                this.spanClass={
+                vali_fail:true,
+                vali_success:false
+            }
+            }
+        },
+        petname(){
+            var reg = /^[\u4e00-\u9fff\w]{5,16}$/;
+            if(reg.test(this.petname)==true){
+                this.spanMsg1="昵称格式正确";
+                this.spanClass1={
+                    vali_fail:false,
+                    vali_success:true
+                }
+            }else{
+                this.spanMsg1="请输入5-16位由字母、数字、_或汉字组成昵称";
+                this.spanClass1={
+                vali_fail:true,
+                vali_success:false
+            }
+         }
+        },
+        password(){
+            var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,30}$/;
+            if(reg.test(this.password)==true){
+                this.spanMsg2="密码格式正确";
+                this.spanClass2={
+                    vali_fail:false,
+                    vali_success:true
+                }
+            }else{
+                this.spanMsg2="密码不符合要求";
+                this.spanClass2={
+                vali_fail:true,
+                vali_success:false
+            }
+          }
         }
     },
     methods:{
       index(){
               this.$router.push('/')
+          },
+      login(){
+            this.$router.push('/login')
+          },
+      check(){
+          if(this.checkbox == false){
+              this.btns=false;
+              this.btn={
+                 btn2:false,
+                 active:true
+              }
+          }else if(this.checkbox == true){
+              this.btns=true;
+              this.btn={
+                 btn2:true,
+                 active:false
+              }
+
           }
       }    
+    },
 }
-    //import reg from '../../public/js/reg.js'
 </script>
 <style scoped>
 #app{
@@ -97,8 +194,7 @@ body a{
 }
 .reg-info{
    width:940px;
-   height:552px;
-   
+   height:552px; 
    border-radius: 2px;
    background: #fff; 
    margin: 0 auto;
@@ -199,6 +295,18 @@ body a{
 	border-radius: 2px;
     border:0;
     margin-top:20px;
+    outline: none;
+}
+.active{
+    width:310px;
+    height:42px;
+    color:#fff;
+    text-align: center;
+	border-radius: 2px;
+    border:0;
+    margin-top:20px;
+    background: #288bc4;
+    outline: none;
 }
 .code
 {

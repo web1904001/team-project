@@ -3,9 +3,10 @@
     <my-header/>
     <div id="details">
         <div class="details-content">
+
             <div class="details-content-left">
-                <a href="" class="ft-img">
-                <img src="../../public/imgs/details/lg/01.jpg" alt="">    
+                <a class="ft-img">
+                <img :src="plist2[i].lg" alt="">    
                 </a>
                 <div class="ft-info">
                     <h2>口袋免捏饭团 | 元气早餐 </h2>
@@ -14,8 +15,8 @@
                         <p><span>74607</span>浏览</p>
                         <p><span>2410</span>收藏</p>
                         <button>收藏</button>
-                    </div>
                 </div>
+            </div>
                 <div class="metarial">
                     <h3>食材清单</h3>
                     <table>
@@ -64,7 +65,7 @@
                 <div class="cook">
                     <h3>烹饪步骤</h3>
                     <div class="cook-bz">
-                       <a href="" class="cook-img"><img src="../../public/imgs/details/md/01.jpg" alt=""></a>
+                       <a href="" class="cook-img"><img :src="plist4.lid" alt=""></a>
                         <div class="cook-info">
                             <h2 class="info-p1">步骤1</h2>
                             <p class="info-p2">一碗油润的葱油拌面的关键是葱炸的酥脆</p>
@@ -117,6 +118,50 @@
     </div>
 </template>
 <script>
+   export default{
+    data(){
+        return{
+            plist1:[],
+            plist2:[{lg:""}],
+            plist3:[],
+            plist4:[],
+            i:0,
+        }
+    },
+    props:["lid"],
+    computed: {
+    },
+    created() {
+      this.load();
+    },
+    watch: {
+      lid() {
+        this.load();
+      }
+    },
+    methods: {
+      load() {
+        // if(this.lid){
+        this.axios.get(
+          "http://localhost:5050/details",
+          {
+            //   params:{
+            //       lid:this.lid
+            //   }
+          }
+        ).then(result => {
+          console.log(result.data);
+          var {plist1,plist2,plist3,plist4}=result.data
+          this.plist1=plist1;
+          this.plist2=plist2;
+          this.plist3=plist3;
+          this.plist4=plist4;   
+        }).catch(err => {
+          console.log(err)
+        })
+        }
+      },    
+    }
 
 </script>
 <style scoped>

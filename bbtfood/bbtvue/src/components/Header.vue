@@ -4,15 +4,16 @@
         <div class="header">
             <img src="../../public/imgs/logo.png" alt="">
             <ul class="nav">
-                <li @click="index"><a>首页</a></li>
-                <li @click="product"><a>菜谱</a></li>
-                <li @click="index"><a>商城</a></li>
-                <li @click="index"><a>笔记</a></li>
-                <li @click="cartoon"><a>动漫</a></li>
-                <li @click="collect"><a>收藏</a></li>
+                <!-- <router-link  v-for="(list,index) in list" :to="list.ito" :key="index"><li>{{list.name}}</li></router-link> -->
+                <li><router-link :to="{path:'/index'}" active-class="active">首页</router-link></li>
+                <li><router-link :to="{path:'/Product'}" active-class="active">菜谱</router-link></li>
+                <li><router-link :to="{path:'/Shoop'}" active-class="active">商城</router-link></li>
+                <li><router-link :to="{path:'/Note'}" active-class="active">笔记</router-link></li>
+                <li><router-link :to="{path:'/Cartoon'}" active-class="active">动漫</router-link></li>
+                <li><router-link :to="{path:'/Collect'}" active-class="active">收藏</router-link></li>
             </ul>
-            <input type="text" value="" placeholder="搜索菜谱、菜单、食材、用户">
-            <div class="sous" ><img src="../../public/imgs/sou-suo.png" alt=""></div>
+            <input v-model="kwords" :placeholder="placeholder" @keyup.13="search">
+            <div class="sous" @click="search"><img src="../../public/imgs/sou-suo.png" alt=""></div>
             <div class="list">
                <a class="btn" href="javascript:;">发布
                  <div class="box">
@@ -25,7 +26,7 @@
                </a>
             </div>
             <div class="login-reg">
-                <a class="login" href="javascript:;" onfocus="this.blur();">登录</a>
+                <a class="login" @click="login">登录</a>
                 <span>|</span>
                 <a class="reg" @click="reg">注册</a>
             </div>
@@ -36,26 +37,35 @@
 <script>
     export default{
         data(){
-            return{
-                activeClass: 0, // 0为默认选择第一个，-1为不选择
+            return{ 
+                kwords:"",//自动添加了kwords()来监视kwords的变化
+                placeholder:"输入搜索关键词"
+                // list:[
+                //     {name:"首页",ito:'/Index'},
+                //     {name:"菜谱",ito:'/Details'},
+                //     {name:"商城",ito:'/About'},
+                //     {name:"笔记",ito:'/About'},
+                //     {name:"动漫",ito:'/Cartoon'},
+                //     {name:"收藏",ito:'/Collect'},
+                //     ],
+                // sty:'',
             }
         },
+         watch:{
+         kwords(){ 
+           this.search();
+          }
+        },
         methods:{
-          index(){
-              this.$router.push('/')
-          },
-          product(){
-              this.$router.push('/product')
-          },
-          collect(){
-              this.$router.push('/collect')
-          },
           reg(){
               this.$router.push('/reg')
           },
-          cartoon(){
-              this.$router.push('/cartoon')
-          }
+          login(){
+               this.$router.push('/login')
+          },
+          search(){
+            console.log(`查找 ${this.kwords} 相关的内容...`)
+        },
       }          
     }
 </script>
@@ -98,6 +108,8 @@ a{
 .active{
     color: #FFB31A;
     font-weight: bold;
+    padding: 5px 0;
+    border-bottom: 2px solid #FFB31A;
 }
 .header input{
     width: 180px;

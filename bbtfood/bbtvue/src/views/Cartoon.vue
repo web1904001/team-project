@@ -1,6 +1,6 @@
 <template>
-   <div>
-   <my-header/>
+  <div>
+    <my-header/>
       <div class="main">
           <div  class="left">
              <ul class="top">
@@ -93,7 +93,7 @@
           </div>
       </div>
       <my-footer/>
-  </div>
+    </div>
 </template>
 <script>
 export default {

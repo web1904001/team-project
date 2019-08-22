@@ -8,32 +8,36 @@ const pool=require("../pool")
 //http://localhost:3000/details?lid=1
 router.get("/",(req,res)=>{
   var lid=req.query.lid;
+  // var bbt_lid=req.query.bbt_lid;
   var output={
-    product:{},
-    specs:[],
-    pics:[]
+    plist1:[],
+    plist2:[],
+    plist3:[],
+    plist4:[]
   }
-  if(lid!==undefined){
-    var sql1=`select * from bbt_laptop where lid=?`;
-    pool.query(sql1,[lid],(err,result)=>{
+    var sql1=`select * from bbt_laptop`;
+    pool.query(sql1,[],(err,result)=>{
       if(err) console.log(err);
-      output.product=result[0];
-      var family_id=output.product["family_id"];
-      var sql2=`select spec,lid from bbt_laptop where family_id=?`;
-      pool.query(sql2,[family_id],(err,result)=>{
+      output.plist1=result;
+      var bbt_lid=output.plist1["lid"];
+      var sql2=`select lg,product from bbt_pic`;
+      pool.query(sql2,[bbt_lid],(err,result)=>{
         if(err) console.log(err);
-        output.specs=result;
-        var sql3=`select * from bbt_laptop_pic where laptop_id=?`
-        pool.query(sql3,[lid],(err,result)=>{
+        output.plist2=result;
+        var sql3=`select * from bbt_laptop_list`;
+        pool.query(sql3,[bbt_lid],(err,result)=>{
           if(err) console.log(err);
-          output.pics=result;
-          res.send(output);
+          output.plist3=result;
+          var sql4=`select * from bbt_laptop_title`;
+          pool.query(sql4,[bbt_lid],(err,result)=>{
+            if(err) console.log(err);
+            output.plist4=result;
+            res.send(output);
+          })
         })
       })
     })
-  }else{
-    res.send(output);
-  }
-})
+  })
+
 
 module.exports=router;
