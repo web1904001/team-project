@@ -13,16 +13,7 @@ router.get("/",(req,res)=>{
       res.send(err);
       console.log(err);
     }else{
-      //setTimeout(function(){
         res.send(result);
-      //},2000)
-      
-      /*res.writeHead(200,{
-        "Access-Control-Allow-Origin":
-          "*"
-      });
-      res.write(JSON.stringify(result));
-      res.end();*/
     }
   })
 })

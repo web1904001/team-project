@@ -36,56 +36,7 @@
             <router-link class="name" to="/" v-text="p.product"></router-link>
           </router-link>
         </li>
-      <!-- <li class="item" @click="details">
-        <a class="cover" href="javascript:;" onfocus="this.blur();">
-          <img src="../assets/220x220_058c4482bd48545f9f5c954217108699.jpg" alt="">
-        </a>
-         <a class="name" href="javascript:;" onfocus="this.blur();">口袋免捏饭团｜元气早餐</a>
-      </li>
-      <li class="item" @click="details">
-        <a class="cover" href="javascript:;" onfocus="this.blur();">
-          <img src="../assets/220x220_984eace5bfec23f2852fd3b33f4de24a.jpg" alt="">
-        </a>
-         <a class="name" href="javascript:;" onfocus="this.blur();">#硬核菜谱制作人# 一夜渍脆黄瓜</a>
-      </li>
-      <li class="item" @click="details">
-        <a class="cover" href="javascript:;" onfocus="this.blur();">
-          <img src="../assets/220x220_87ada082d1eb452e42265510f2a838ac.jpg" alt="">
-        </a>
-         <a class="name" href="javascript:;" onfocus="this.blur();">#硬核菜谱制作人#蒜香粉丝烤鲜虾</a>
-      </li>
-      <li class="item" style="margin-right:0;" @click="details">
-        <a class="cover" href="javascript:;" onfocus="this.blur();">
-          <img src="../assets/220x220_d16ddee154ee356c626d7f13b309705f.jpeg" alt="">
-        </a>
-         <a class="name" href="javascript:;" onfocus="this.blur();">#硬核菜谱制作人#肉末豆腐</a>
-      </li>
-      <li class="item" @click="details">
-        <a class="cover" href="javascript:;" onfocus="this.blur();">
-          <img src="../assets/220x220_93093610b5ffdca784acc6edb27c53d1.jpg" alt="">
-        </a>
-         <a class="name" href="javascript:;" onfocus="this.blur();">#硬核菜谱制作人#萌萌哒小狮子纸杯蛋糕</a>
-      </li>
-      <li class="item" @click="details">
-        <a class="cover" href="javascript:;" onfocus="this.blur();">
-          <img src="../assets/220x220_695931e3ce381d66018efff87acffc64.jpg" alt="">
-        </a>
-         <a class="name" href="javascript:;" onfocus="this.blur();">凉拌干豆腐 #美食新势力#</a>
-      </li>
-      <li class="item" @click="details">
-        <a class="cover" href="javascript:;" onfocus="this.blur();">
-          <img src="../assets/220x220_b5cb6503d8ebee7a0239db8e364b7674.jpeg" alt="">
-        </a>
-         <a class="name" href="javascript:;" onfocus="this.blur();">#硬核菜谱制作人#西式黑椒牛扒</a>
-      </li>
-      <li class="item" style="margin-right:0;" @click="details">
-        <a class="cover" href="javascript:;" onfocus="this.blur();">
-          <img src="../assets/220x220_e5dd4962121fd6ded36dc99f25c08e7e.jpg" alt="">
-        </a>
-         <a class="name" href="javascript:;" onfocus="this.blur();">葱油拌面</a>
-      </li> -->
     </ul>
-
     <h3>笔记
       <a class="gd" href="javascript:;" onfocus="this.blur();">更多&gt;</a>
     </h3>
@@ -96,54 +47,6 @@
               <router-link class="name" to="/" v-text="p.product"></router-link>
             </router-link>
           </li>
-      <!-- <li class="item" @click="details">
-        <a class="cover" href="javascript:;" onfocus="this.blur();">
-          <img src="../assets/220x220_058c4482bd48545f9f5c954217108699.jpg" alt="">
-        </a>
-         <a class="name" href="javascript:;" onfocus="this.blur();">口袋免捏饭团｜元气早餐</a>
-      </li>
-      <li class="item" @click="details">
-        <a class="cover" href="javascript:;" onfocus="this.blur();">
-          <img src="../assets/220x220_984eace5bfec23f2852fd3b33f4de24a.jpg" alt="">
-        </a>
-         <a class="name" href="javascript:;" onfocus="this.blur();">#硬核菜谱制作人# 一夜渍脆黄瓜</a>
-      </li>
-      <li class="item" @click="details">
-        <a class="cover" href="javascript:;" onfocus="this.blur();">
-          <img src="../assets/220x220_87ada082d1eb452e42265510f2a838ac.jpg" alt="">
-        </a>
-         <a class="name" href="javascript:;" onfocus="this.blur();">#硬核菜谱制作人#蒜香粉丝烤鲜虾</a>
-      </li>
-      <li class="item" style="margin-right:0;" @click="details">
-        <a class="cover" href="javascript:;" onfocus="this.blur();">
-          <img src="../assets/220x220_d16ddee154ee356c626d7f13b309705f.jpeg" alt="">
-        </a>
-         <a class="name" href="javascript:;" onfocus="this.blur();">#硬核菜谱制作人#肉末豆腐</a>
-      </li>
-      <li class="item" @click="details">
-        <a class="cover" href="javascript:;" onfocus="this.blur();">
-          <img src="../assets/220x220_93093610b5ffdca784acc6edb27c53d1.jpg" alt="">
-        </a>
-         <a class="name" href="javascript:;" onfocus="this.blur();">#硬核菜谱制作人#萌萌哒小狮子纸杯蛋糕</a>
-      </li>
-      <li class="item" @click="details">
-        <a class="cover" href="javascript:;" onfocus="this.blur();">
-          <img src="../assets/220x220_695931e3ce381d66018efff87acffc64.jpg" alt="">
-        </a>
-         <a class="name" href="javascript:;" onfocus="this.blur();">凉拌干豆腐 #美食新势力#</a>
-      </li>
-      <li class="item" @click="details">
-        <a class="cover" href="javascript:;" onfocus="this.blur();">
-          <img src="../assets/220x220_b5cb6503d8ebee7a0239db8e364b7674.jpeg" alt="">
-        </a>
-         <a class="name" href="javascript:;" onfocus="this.blur();">#硬核菜谱制作人#西式黑椒牛扒</a>
-      </li>
-      <li class="item" style="margin-right:0;" @click="details">
-        <a class="cover" href="javascript:;" onfocus="this.blur();">
-          <img src="../assets/220x220_e5dd4962121fd6ded36dc99f25c08e7e.jpg" alt="">
-        </a>
-         <a class="name" href="javascript:;" onfocus="this.blur();">葱油拌面</a>
-      </li> -->
     </ul>
     <h3></h3>
   </div>
@@ -183,10 +86,10 @@
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
           },
+          id:``
         },
       }
     },
-     props: ["tid"],
     computed: {
       swiper() {
         return this.$refs.mySwiper.swiper
@@ -205,19 +108,19 @@
         this.$router.push('/Details')
       },
       load() {
+        let arr = []
         this.axios.get(
           "http://localhost:5050/index",
         ).then(res => {
           console.log(res);
           this.list = res.data;
-          console.log(this.list)
         }).catch(err => {
           console.log(err)
         })
       }
     }
   }       
-</script>       
+</script>
    <style scoped>    
    /*轮播图样式  */
    a{text-decoration:none;}

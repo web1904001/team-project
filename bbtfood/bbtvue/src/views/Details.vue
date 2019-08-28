@@ -6,10 +6,10 @@
 
             <div class="details-content-left">
                 <a class="ft-img">
-                <img :src="plist2[i].lg" alt="">    
+                <img :src="plist2[i].lg" width=100% alt="">    
                 </a>
                 <div class="ft-info">
-                    <h2>口袋免捏饭团 | 元气早餐 </h2>
+                    <h2>{{plist2[i].product}}</h2>
                     <span class="ft-jp">精品</span>
                     <div class="ft-like">   
                         <p><span>74607</span>浏览</p>
@@ -21,16 +21,13 @@
                     <h3>食材清单</h3>
                     <table>
                         <tbody>
-                            <tr>
+                            <tr v-for="(b,i) of plist3" :key="i">
                                 <td>
-                                    <span>【金枪鱼饭团】</span>
+                                    <span>{{b.introduce1}}</span>
                                 </td>
-                                <td>
-                                    <span>新鲜米饭</span>
-                                    <span>240g</span>
-                                </td>
+                                    <td>{{b.introduce2}}</td>
                             </tr>
-                            <tr>
+                            <!-- <tr>
                                 <td> 
                                     <span>大海苔</span>
                                     <span>2张</span>
@@ -58,19 +55,19 @@
                                     <span>黑胡椒粉</span>
                                     <span>1g</span>
                                 </td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                 </div>
                 <div class="cook">
                     <h3>烹饪步骤</h3>
-                    <div class="cook-bz">
-                       <a href="" class="cook-img"><img :src="plist4.lid" alt=""></a>
+                    <div class="cook-bz" v-for="(l,i) of plist4" :key="i">
+                       <a href="" class="cook-img"><img :src="plist4[i].img" alt=""></a>
                         <div class="cook-info">
-                            <h2 class="info-p1">步骤1</h2>
-                            <p class="info-p2">一碗油润的葱油拌面的关键是葱炸的酥脆</p>
+                            <h2 class="info-p1">步骤{{i+1}}</h2>
+                            <p class="info-p2">{{plist4[i].introduct}}</p>
                         </div>
-                    </div>
+                    <!-- </div>
                     <div class="cook-bz">
                         <a href="" class="cook-img"><img src="../../public/imgs/details/md/01.jpg" alt=""></a>
                         <div class="cook-info">
@@ -90,8 +87,8 @@
                         <div class="cook-info">
                             <h2 class="info-p1">步骤1</h2>
                             <p class="info-p2">一碗油润的葱油拌面的关键是葱炸的酥脆</p>
-                        </div>
-                    </div>
+                        </div>-->
+                    </div> 
                 </div>
                 <div class="ft-xts">
                     <h3>小贴士</h3>
@@ -128,7 +125,7 @@
             i:0,
         }
     },
-    props:["lid"],
+    // props:["lid"],
     computed: {
     },
     created() {
@@ -141,13 +138,12 @@
     },
     methods: {
       load() {
-        // if(this.lid){
         this.axios.get(
           "http://localhost:5050/details",
           {
-            //   params:{
-            //       lid:this.lid
-            //   }
+              params:{
+                  lid:this.$route.params.tid
+              }
           }
         ).then(result => {
           console.log(result.data);
@@ -155,14 +151,15 @@
           this.plist1=plist1;
           this.plist2=plist2;
           this.plist3=plist3;
-          this.plist4=plist4;   
+          this.plist4=plist4;
+          this.i=0  
         }).catch(err => {
           console.log(err)
         })
         }
       },    
     }
-
+// }
 </script>
 <style scoped>
     body{

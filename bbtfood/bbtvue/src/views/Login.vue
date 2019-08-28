@@ -17,16 +17,20 @@
                 </div>
                 <div class="login-right-bottom">
                     <div class="input-phone">
-                        <input type="text" placeholder="请输入手机号/邮箱">
+                        <input type="text" placeholder="请输入手机号/邮箱" v-model="phone">
+                        <span :class="spanClass">{{spanMsg}}</span>
                     </div>
                     <div class="input-pwd">
-                         <input type="text" placeholder="请输入密码">
+                         <input type="text" placeholder="请输入密码" v-model="upwd">
+                         <span :class="spanClass2">{{spanMsg2}}</span>
                     </div>
                     <p class="p1">
                         <span>忘记密码 ></span>
                         <span>邮箱或手机不能为空</span>
                     </p>
-                    <button class="login-btn">登录</button>
+                    <div @click="denglu">
+                    <button class="login-btn" @click="login">登录</button>
+                    </div>
                     <p class="p2">使用社交账号登录棒棒糖美食</p>
                     <div class="tx-xl">
                         <p class="p3">
@@ -53,18 +57,89 @@
 </div>
 </template>
 <script>
+    import qs from "qs";
     export default{
         data(){
             return{
-
+                phone:"",
+                spanClass:{
+                vali_success:false,
+                vali_fail:false
+                },
+                spanMsg:"",
+                upwd:"",
+                spanClass2:{
+                vali_success:false,
+                vali_fail:false
+                },
+                spanMsg2:'',
             }
         },
-        methods: {
+    watch:{
+        phone(){
+                var reg=/^1[3-9]\d{9}$/;
+                if(reg.test(this.phone)==true){
+                    this.spanMsg="手机号可用";
+                    this.spanClass={
+                        vali_fail:false,
+                        vali_success:true
+                    }
+                }else{
+                    this.spanMsg="请输入手机号";
+                    this.spanClass={
+                    vali_fail:true,
+                    vali_success:false
+                }
+                }
+            },
+            upwd(){
+                var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,30}$/;
+                if(reg.test(this.upwd)==true){
+                    this.spanMsg2="密码格式正确";
+                    this.spanClass2={
+                        vali_fail:false,
+                        vali_success:true
+                    }
+                }else{
+                    this.spanMsg2="密码不符合要求";
+                    this.spanClass2={
+                    vali_fail:true,
+                    vali_success:false
+                }
+              }
+            },
+        },
+        methods:{
+            denglu(){
+            if (this.phone==""){
+                alert("请输入电话")
+                return;
+            }else if(this.password==""){
+                alert("请输入用户名")
+                return;
+            }else{
+                alert("注册成功")
+            }
+            },
             reg(){
             this.$router.push('/reg')
-          },
+            },
+            login(){
+                let obj = {
+                  phone:this.phone,
+                  upwd:this.upwd
+              }
+            this.axios.post(
+              "http://localhost:5050/login",
+              qs.stringify(obj)
+            ).then(result => {
+              console.log(result.data);
+            }).catch(err => {
+              console.log(err)
+            })
+          },   
         }
-    }
+     }
 </script>
 <style scoped>
     *{margin: 0;padding: 0}
@@ -139,12 +214,18 @@
         vertical-align: middle;
         font-size: 14px;
         color:#333;
-        padding: 5px 0 5px 10px;
+        padding: 0px 0 0px 10px;
         margin-bottom:30px; 
+        margin-right:30px;
     }
     .login-right-bottom .input-phone input{
         margin-top:40px;
+        margin-right:30px;
     }  
+    .spanClass{
+        display: inline-block;
+        margin-top:60px
+    }
     .login-right-bottom .p1{
        margin:-5px 0 20px;
     }
@@ -224,5 +305,12 @@
     }
     .bbt-info .bbt-info2{
         color:#999;
+    }
+    .input-phone{
+        width:610px;
+        
+    }
+    .input-pwd{
+        width:610px;
     }
 </style>

@@ -3,7 +3,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const index=require("./routes/index");
 const details=require("./routes/details");
-const products=require("./routes/products");
+const product=require("./routes/product");
+const reg=require("./routes/reg");
+// const login=require("./routes/login");
 const cors=require("cors");
 /*引入路由模块*/
 
@@ -21,4 +23,6 @@ app.use(express.static('public'));
 /*使用路由器来管理路由*/
 app.use("/index",index);
 app.use("/details",details);
-app.use("/products",products);
+app.use("/product",product);
+app.use("/reg",reg);
+// app.use("/login",login);
